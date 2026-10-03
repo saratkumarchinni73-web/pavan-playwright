@@ -21,18 +21,14 @@ export default defineConfig({
     launchOptions: {
       args: ['--start-maximized'],
     },
-    
-    
-
-
 
     /* Base URL to use in actions like `await page.goto('')`. */
-     //baseURL: 'https://www.google.com',
-
-     
+    // baseURL: 'https://www.google.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
 
   testDir: './tests',
@@ -45,7 +41,11 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['list'],
+    ['html'],
+    ['allure-playwright'],
+  ],
 
   /* Configure projects for major browsers */
   projects: [
@@ -63,7 +63,6 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },*/
-    
 
     /* Test against mobile viewports. */
     // {
@@ -92,9 +91,5 @@ export default defineConfig({
   //   url: 'http://localhost:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-
-
-
-  
 });
 

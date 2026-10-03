@@ -39,7 +39,7 @@ async logoandsubandversion(){
     
     await this.app_sub_title.click()
     await this.app_version.click()
-   // await expect(this.TricentisLogo).toHaveText('Tricentis Logo')
+    //await expect(this.TricentisLogo).toHaveText('Tricentis Logo')
    // await expect(this.app_sub_title).toContainText('Tricentis Logo')
    // await expect(this.app_version).toBeChecked()
 
